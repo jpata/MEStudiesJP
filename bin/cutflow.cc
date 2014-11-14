@@ -239,6 +239,12 @@ int main(int argc, const char* argv[])
         TH1D* h_lep_pt_sl = add_hist_1d<TH1D>(histmap, pf + "lepton_pt_sl", 10, 400, 80);
         TH1D* h_lep1_pt_dl = add_hist_1d<TH1D>(histmap, pf + "lepton1_pt_dl", 10, 400, 80);
         TH1D* h_lep2_pt_dl = add_hist_1d<TH1D>(histmap, pf + "lepton2_pt_dl", 10, 400, 80);
+        
+        TH1D* h_lep_riso_sl = add_hist_1d<TH1D>(histmap, pf + "lepton_riso_sl", 0, 0.2, 40);
+        TH1D* h_lep1_riso_dl = add_hist_1d<TH1D>(histmap, pf + "lepton1_riso_dl", 0, 0.2, 40);
+        TH1D* h_lep2_riso_dl = add_hist_1d<TH1D>(histmap, pf + "lepton2_riso_dl", 0, 0.2, 40);
+
+        
         TH1D* h_Vtype = add_hist_1d<TH1D>(histmap, pf + "Vtype", 0, 10);
         TH1D* h_type = add_hist_1d<TH1D>(histmap, pf + "type", 0, 10);
         
@@ -327,7 +333,8 @@ int main(int argc, const char* argv[])
 //#    # // OR of four trigger paths:  "HLT_Mu40_eta2p1_v.*", "HLT_IsoMu24_eta2p1_v.*", "HLT_Mu40_v.*",  "HLT_IsoMu24_v.*"
 //#    #int trigVtype0 =  (Vtype==0 && ( triggerFlags[22]>0 || triggerFlags[23]>0 || triggerFlags[14]>0 ||triggerFlags[21]>0 ));
 //#    #// OR of two trigger paths:    "HLT_Ele17_CaloIdL_CaloIsoVL_Ele8_CaloIdL_CaloIsoVL_v.*",
-//            
+//
+            h_triggers->Fill(0);
             bool trig_mu = trf[22]==1 || trf[23]==1 || trf[14]==1 || trf[21]==1;
             bool trig_ele = trf[44]==1;
             if (trig_mu) {
@@ -344,7 +351,7 @@ int main(int argc, const char* argv[])
             //                    std::cout << trf[j];
             //                std::cout << endl;
             //            }
-            
+
             //Single lepton cuts
             if (is_sl) {
                 const float lep_pt1 = t.lepton_pt_[0];
@@ -353,6 +360,8 @@ int main(int argc, const char* argv[])
                 if (t.numBTagM_ >= 3) {
                     h_nj_sl->Fill(t.numJets_);
                 }
+                
+                h_lep_riso_sl->Fill(t.lepton_rIso_[0]);
             }
             
             //dilepton cuts
@@ -365,6 +374,10 @@ int main(int argc, const char* argv[])
                 if (t.numBTagM_ >= 2) {
                     h_nj_dl->Fill(t.numJets_);
                 }
+                
+                h_lep1_riso_dl->Fill(t.lepton_rIso_[0]);
+                h_lep2_riso_dl->Fill(t.lepton_rIso_[1]);
+
             }
             
             MECategory cat = assign_me_category(&t, sample_type);
