@@ -36,5 +36,5 @@ process.fwliteInput = cms.PSet(
             type=cms.int32(0)
         ),
     ]),
-    evLimits=cms.vint32(0, 15000000)
+    evLimits=cms.vint32(0, -1)
 )
