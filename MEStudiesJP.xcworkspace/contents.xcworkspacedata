@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:../TTHNtupleAnalyzer"
+      name = "TTHNtupleAnalyzer">
+      <FileRef
+         location = "group:contents.txt">
+      </FileRef>
+      <Group
+         location = "group:crab_configs"
+         name = "crab_configs">
+         <FileRef
+            location = "group:c_tthbb.cfg">
+         </FileRef>
+         <FileRef
+            location = "group:c_tthbb.py">
+         </FileRef>
+         <FileRef
+            location = "group:c_tthbb.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:c_ttjets.cfg">
+         </FileRef>
+         <FileRef
+            location = "group:c_ttjets.py">
+         </FileRef>
+         <FileRef
+            location = "group:crab.cfg">
+         </FileRef>
+         <FileRef
+            location = "group:crab.py">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:datasets"
+         name = "datasets">
+         <FileRef
+            location = "group:ttbar.txt">
+         </FileRef>
+         <FileRef
+            location = "group:tthbb.txt">
+         </FileRef>
+         <FileRef
+            location = "group:ttjets_allfiles.txt">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:interface"
+         name = "interface">
+         <FileRef
+            location = "group:EventHypothesis.hh">
+         </FileRef>
+         <FileRef
+            location = "group:HypoEnums.hh">
+         </FileRef>
+         <FileRef
+            location = "group:tth_tree.hh">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:parrun"
+         name = "parrun">
+         <FileRef
+            location = "group:churn.sh">
+         </FileRef>
+         <FileRef
+            location = "group:create_step1.py">
+         </FileRef>
+         <FileRef
+            location = "group:create_step2.py">
+         </FileRef>
+         <FileRef
+            location = "group:parrun.py">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:plugins"
+         name = "plugins">
+         <FileRef
+            location = "group:BuildFile.xml">
+         </FileRef>
+         <FileRef
+            location = "group:TTHNtupleAnalyzer.cc">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:python"
+         name = "python">
+         <FileRef
+            location = "group:__init__.py">
+         </FileRef>
+         <FileRef
+            location = "group:__init__.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:CfiFile_cfi.py">
+         </FileRef>
+         <FileRef
+            location = "group:CfiFile_cfi.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:gen_analyzer.py">
+         </FileRef>
+         <FileRef
+            location = "group:gen_analyzer.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:Main_cfg.py">
+         </FileRef>
+         <FileRef
+            location = "group:Main_cfg.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:tree_doc.py">
+         </FileRef>
+         <FileRef
+            location = "group:tree_doc.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:treeSize.py">
+         </FileRef>
+         <FileRef
+            location = "group:treeSize.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:triggers_MC_cff.py">
+         </FileRef>
+         <FileRef
+            location = "group:triggers_MC_cff.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:triggers_test.py">
+         </FileRef>
+         <FileRef
+            location = "group:triggers_test.pyc">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:replica.sh">
+      </FileRef>
+      <FileRef
+         location = "group:sizes.json">
+      </FileRef>
+      <Group
+         location = "group:test"
+         name = "test">
+         <FileRef
+            location = "group:BuildFile.xml">
+         </FileRef>
+         <FileRef
+            location = "group:print_tree.py">
+         </FileRef>
+         <FileRef
+            location = "group:run_TTHNtupleAnalyzer.cc">
+         </FileRef>
+         <FileRef
+            location = "group:runtests.sh">
+         </FileRef>
+         <FileRef
+            location = "group:test_load.sh">
+         </FileRef>
+         <FileRef
+            location = "group:ttbar_cfg.py">
+         </FileRef>
+         <FileRef
+            location = "group:ttbar_test.py">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:tree_header.jl">
+      </FileRef>
+      <FileRef
+         location = "group:x">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "MEStudiesJP">
+      <Group
+         location = "group:bin"
+         name = "bin">
+         <FileRef
+            location = "group:BuildFile.xml">
+         </FileRef>
+         <FileRef
+            location = "group:cutflow.cc">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:../python"
+         name = "python">
+         <FileRef
+            location = "group:__init__.py">
+         </FileRef>
+         <FileRef
+            location = "group:__init__.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:cutflow.py">
+         </FileRef>
+         <FileRef
+            location = "group:cutflow.pyc">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:plot.py">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:../MEAnalysis"
+      name = "MEAnalysis">
+      <Group
+         location = "group:bin"
+         name = "bin">
+         <FileRef
+            location = "group:analyze_input_tree.py">
+         </FileRef>
+         <FileRef
+            location = "group:BuildFile.xml">
+         </FileRef>
+         <FileRef
+            location = "group:MEAnalysis.cc">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:comp.sh">
+      </FileRef>
+      <Group
+         location = "group:interface"
+         name = "interface">
+         <FileRef
+            location = "group:HelperFunctions.h">
+         </FileRef>
+         <FileRef
+            location = "group:MECombination.h">
+         </FileRef>
+         <FileRef
+            location = "group:MEIntegratorNew.h">
+         </FileRef>
+         <FileRef
+            location = "group:METree.hh">
+         </FileRef>
+         <FileRef
+            location = "group:Samples.h">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:libs"
+         name = "libs">
+         <FileRef
+            location = "group:libbar.so">
+         </FileRef>
+         <FileRef
+            location = "group:libcoli.so">
+         </FileRef>
+         <FileRef
+            location = "group:libopenloops.so">
+         </FileRef>
+         <FileRef
+            location = "group:libopenloops_ppHtt_1tL.so">
+         </FileRef>
+         <FileRef
+            location = "group:libopenloops_ppttbb_1tL.so">
+         </FileRef>
+         <FileRef
+            location = "group:libopenloops_ppttj_1tL.so">
+         </FileRef>
+         <FileRef
+            location = "group:libpphttxcallme2born.so">
+         </FileRef>
+         <FileRef
+            location = "group:libppttxbbxcallme2born.so">
+         </FileRef>
+         <FileRef
+            location = "group:libppttxjcallme2born.so">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:log">
+      </FileRef>
+      <FileRef
+         location = "group:outfile.root">
+      </FileRef>
+      <FileRef
+         location = "group:plot.py">
+      </FileRef>
+      <Group
+         location = "group:python"
+         name = "python">
+         <FileRef
+            location = "group:__init__.py">
+         </FileRef>
+         <FileRef
+            location = "group:__init__.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:cutflow.py">
+         </FileRef>
+         <FileRef
+            location = "group:cutflow.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:MEAnalysis_cfg.py">
+         </FileRef>
+         <FileRef
+            location = "group:MEAnalysis_cfg.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:MEAnalysis_cfg_envs.py">
+         </FileRef>
+         <FileRef
+            location = "group:MEAnalysis_cfg_envs.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:meAnalysisNew_all_8TeV.py">
+         </FileRef>
+         <FileRef
+            location = "group:meAnalysisNew_all_8TeV.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:mem_categories_cff.py">
+         </FileRef>
+         <FileRef
+            location = "group:mem_categories_cff.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:mem_parameters_cff.py">
+         </FileRef>
+         <FileRef
+            location = "group:mem_parameters_cff.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:samples_cff.py">
+         </FileRef>
+         <FileRef
+            location = "group:samples_cff.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:samples_v1.py">
+         </FileRef>
+         <FileRef
+            location = "group:samples_v1.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:submitAllMEAnalysis.py">
+         </FileRef>
+         <FileRef
+            location = "group:submitAllMEAnalysis.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:submitAllMEAnalysisNew_all.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:test_cfg.py">
+         </FileRef>
+         <FileRef
+            location = "group:test_cfg.pyc">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:root"
+         name = "root">
+         <FileRef
+            location = "group:ControlPlotsTEST.root">
+         </FileRef>
+         <FileRef
+            location = "group:ControlPlotsTEST_reg.root">
+         </FileRef>
+         <FileRef
+            location = "group:ControlPlotsTEST_std_gen.root">
+         </FileRef>
+         <FileRef
+            location = "group:csv_rwt_hf.root">
+         </FileRef>
+         <FileRef
+            location = "group:csv_rwt_lf.root">
+         </FileRef>
+         <FileRef
+            location = "group:DoubleEle17.TrigEff.wp95.2012ABCD.root">
+         </FileRef>
+         <FileRef
+            location = "group:DoubleEle8.TrigEff.wp95.2012ABCD.root">
+         </FileRef>
+         <FileRef
+            location = "group:EleRecoId.ScaleFactor.wp80.2012ABCD.root">
+         </FileRef>
+         <FileRef
+            location = "group:EleRecoId.ScaleFactor.wp95.2012ABCD.root">
+         </FileRef>
+         <FileRef
+            location = "group:MEAnalysisNewTEST.root">
+         </FileRef>
+         <FileRef
+            location = "group:MuRecoId.ScaleFactor.2012ABCD.root">
+         </FileRef>
+         <FileRef
+            location = "group:Plot.C">
+         </FileRef>
+         <FileRef
+            location = "group:SingleEle.TrigEff.wp80.2012ABCD.root">
+         </FileRef>
+         <FileRef
+            location = "group:SingleEle.TrigEff.wp95.2012ABCD.root">
+         </FileRef>
+         <FileRef
+            location = "group:SingleMu24OR40.TrigEff.2012ABCD.root">
+         </FileRef>
+         <FileRef
+            location = "group:TMVARegression_target-pt_gen_BDTG.weights.xml">
+         </FileRef>
+         <FileRef
+            location = "group:TMVARegression_target-pt_part_BDTG.weights.xml">
+         </FileRef>
+         <FileRef
+            location = "group:transferFunctionsNew_partonE_new.root">
+         </FileRef>
+         <FileRef
+            location = "group:transferFunctionsTEST.root">
+         </FileRef>
+         <FileRef
+            location = "group:transferFunctionsTEST_reg.root">
+         </FileRef>
+         <FileRef
+            location = "group:treeProducerTESTpt_gen.root">
+         </FileRef>
+         <FileRef
+            location = "group:treeProducerTESTpt_part.root">
+         </FileRef>
+         <Group
+            location = "group:weights"
+            name = "weights">
+            <FileRef
+               location = "group:TMVARegression_target-pt_gen_BDTG.weights.xml">
+            </FileRef>
+            <FileRef
+               location = "group:TMVARegression_target-pt_part_BDTG.weights.xml">
+            </FileRef>
+         </Group>
+      </Group>
+      <FileRef
+         location = "group:tags">
+      </FileRef>
+      <Group
+         location = "group:test"
+         name = "test">
+         <FileRef
+            location = "group:BuildFile.xml">
+         </FileRef>
+         <FileRef
+            location = "group:me_test_cfg.py">
+         </FileRef>
+         <FileRef
+            location = "group:MEAnalysis_cfg.py">
+         </FileRef>
+         <FileRef
+            location = "group:run_MEAnalysis.cc">
+         </FileRef>
+         <FileRef
+            location = "group:runtests.sh">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:tmp"
+         name = "tmp">
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p14.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p15.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p21.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p27.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p4.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p44.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p46.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p47.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p54.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p57.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p64.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p66.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p68.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p70.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p81.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p81.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p82.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p82.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p91.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p93.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTHBB125_p98.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p114.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p140.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p146.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p150.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p152.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p153.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p154.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p158.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p162.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p164.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p165.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p167.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p167.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p181.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p190.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p20.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p228.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p229.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p232.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p234.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p234.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p236.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p257.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p273.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p278.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p280.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p299.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p3.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p327.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p342.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p356.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p359.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p377.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p384.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p395.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p416.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p420.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p432.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p433.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p439.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p441.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p458.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p467.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p486.py">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p49.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p519.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p553.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p590.sh">
+         </FileRef>
+         <FileRef
+            location = "group:job_all_rec_std_TTJets_p598.sh">
+         </FileRef>
+      </Group>
+   </Group>
+</Workspace>
