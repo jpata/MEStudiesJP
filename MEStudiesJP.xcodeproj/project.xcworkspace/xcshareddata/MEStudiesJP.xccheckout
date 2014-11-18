@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EB78898D-49A4-4692-9B20-228F001323A9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MEStudiesJP</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>08581801E0EE818402315E1414089D740DFDC811</key>
+		<string>https://github.com/jpata/tthbb13.git</string>
+		<key>5F0E9B085802642D3F40A9478469CEC067B1E2CB</key>
+		<string>github.com:jpata/MEStudiesJP.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MEStudiesJP.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>08581801E0EE818402315E1414089D740DFDC811</key>
+		<string>../../..</string>
+		<key>5F0E9B085802642D3F40A9478469CEC067B1E2CB</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:jpata/MEStudiesJP.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5F0E9B085802642D3F40A9478469CEC067B1E2CB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>08581801E0EE818402315E1414089D740DFDC811</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5F0E9B085802642D3F40A9478469CEC067B1E2CB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MEStudiesJP</string>
+		</dict>
+	</array>
+</dict>
+</plist>

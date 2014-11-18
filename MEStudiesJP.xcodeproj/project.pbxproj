@@ -1,0 +1,498 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		A7AE45311A1A1C3800F5E372 /* BuildFile.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BuildFile.xml; sourceTree = "<group>"; };
+		A7AE45321A1A1C3800F5E372 /* cutflow.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cutflow.cc; sourceTree = "<group>"; };
+		A7AE45391A1A1C3800F5E372 /* __init__.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		A7AE453B1A1A1C3800F5E372 /* cutflow.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = cutflow.py; sourceTree = "<group>"; };
+		A7AE453E1A1A1CA700F5E372 /* cuts.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = cuts.py; path = python/cuts.py; sourceTree = "<group>"; };
+		A7AE453F1A1A1CA700F5E372 /* run_cuts.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = run_cuts.py; path = python/run_cuts.py; sourceTree = "<group>"; };
+		A7AE45421A1A1CF200F5E372 /* analyze_input_tree.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = analyze_input_tree.py; sourceTree = "<group>"; };
+		A7AE45431A1A1CF200F5E372 /* BuildFile.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BuildFile.xml; sourceTree = "<group>"; };
+		A7AE45441A1A1CF200F5E372 /* MEAnalysis.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MEAnalysis.cc; sourceTree = "<group>"; };
+		A7AE45461A1A1CF200F5E372 /* HelperFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperFunctions.h; sourceTree = "<group>"; };
+		A7AE45471A1A1CF200F5E372 /* MECombination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MECombination.h; sourceTree = "<group>"; };
+		A7AE45481A1A1CF200F5E372 /* MEIntegratorNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIntegratorNew.h; sourceTree = "<group>"; };
+		A7AE45491A1A1CF200F5E372 /* METree.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = METree.hh; sourceTree = "<group>"; };
+		A7AE454A1A1A1CF200F5E372 /* Samples.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Samples.h; sourceTree = "<group>"; };
+		A7AE454C1A1A1CF200F5E372 /* libbar.so */ = {isa = PBXFileReference; lastKnownFileType = file; path = libbar.so; sourceTree = "<group>"; };
+		A7AE454D1A1A1CF200F5E372 /* libcoli.so */ = {isa = PBXFileReference; lastKnownFileType = file; path = libcoli.so; sourceTree = "<group>"; };
+		A7AE454E1A1A1CF200F5E372 /* libopenloops.so */ = {isa = PBXFileReference; lastKnownFileType = file; path = libopenloops.so; sourceTree = "<group>"; };
+		A7AE454F1A1A1CF200F5E372 /* libopenloops_ppHtt_1tL.so */ = {isa = PBXFileReference; lastKnownFileType = file; path = libopenloops_ppHtt_1tL.so; sourceTree = "<group>"; };
+		A7AE45501A1A1CF200F5E372 /* libopenloops_ppttbb_1tL.so */ = {isa = PBXFileReference; lastKnownFileType = file; path = libopenloops_ppttbb_1tL.so; sourceTree = "<group>"; };
+		A7AE45511A1A1CF200F5E372 /* libopenloops_ppttj_1tL.so */ = {isa = PBXFileReference; lastKnownFileType = file; path = libopenloops_ppttj_1tL.so; sourceTree = "<group>"; };
+		A7AE45521A1A1CF200F5E372 /* libpphttxcallme2born.so */ = {isa = PBXFileReference; lastKnownFileType = file; path = libpphttxcallme2born.so; sourceTree = "<group>"; };
+		A7AE45531A1A1CF200F5E372 /* libppttxbbxcallme2born.so */ = {isa = PBXFileReference; lastKnownFileType = file; path = libppttxbbxcallme2born.so; sourceTree = "<group>"; };
+		A7AE45541A1A1CF200F5E372 /* libppttxjcallme2born.so */ = {isa = PBXFileReference; lastKnownFileType = file; path = libppttxjcallme2born.so; sourceTree = "<group>"; };
+		A7AE45561A1A1CF200F5E372 /* __init__.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		A7AE45571A1A1CF200F5E372 /* MEAnalysis_cfg.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = MEAnalysis_cfg.py; sourceTree = "<group>"; };
+		A7AE45581A1A1CF200F5E372 /* meAnalysisNew_all_8TeV.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = meAnalysisNew_all_8TeV.py; sourceTree = "<group>"; };
+		A7AE45591A1A1CF200F5E372 /* mem_categories_cff.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = mem_categories_cff.py; sourceTree = "<group>"; };
+		A7AE455A1A1A1CF200F5E372 /* mem_parameters_cff.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = mem_parameters_cff.py; sourceTree = "<group>"; };
+		A7AE455B1A1A1CF200F5E372 /* samples_cff.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = samples_cff.py; sourceTree = "<group>"; };
+		A7AE455C1A1A1CF200F5E372 /* samples_v1.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = samples_v1.py; sourceTree = "<group>"; };
+		A7AE455D1A1A1CF200F5E372 /* submitAllMEAnalysis.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = submitAllMEAnalysis.py; sourceTree = "<group>"; };
+		A7AE455E1A1A1CF200F5E372 /* test_cfg.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = test_cfg.py; sourceTree = "<group>"; };
+		A7AE45601A1A1CF200F5E372 /* ControlPlotsTEST.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = ControlPlotsTEST.root; sourceTree = "<group>"; };
+		A7AE45611A1A1CF200F5E372 /* ControlPlotsTEST_reg.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = ControlPlotsTEST_reg.root; sourceTree = "<group>"; };
+		A7AE45621A1A1CF200F5E372 /* ControlPlotsTEST_std_gen.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = ControlPlotsTEST_std_gen.root; sourceTree = "<group>"; };
+		A7AE45631A1A1CF200F5E372 /* csv_rwt_hf.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = csv_rwt_hf.root; sourceTree = "<group>"; };
+		A7AE45641A1A1CF200F5E372 /* csv_rwt_lf.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = csv_rwt_lf.root; sourceTree = "<group>"; };
+		A7AE45651A1A1CF200F5E372 /* DoubleEle17.TrigEff.wp95.2012ABCD.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = DoubleEle17.TrigEff.wp95.2012ABCD.root; sourceTree = "<group>"; };
+		A7AE45661A1A1CF200F5E372 /* DoubleEle8.TrigEff.wp95.2012ABCD.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = DoubleEle8.TrigEff.wp95.2012ABCD.root; sourceTree = "<group>"; };
+		A7AE45671A1A1CF200F5E372 /* EleRecoId.ScaleFactor.wp80.2012ABCD.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = EleRecoId.ScaleFactor.wp80.2012ABCD.root; sourceTree = "<group>"; };
+		A7AE45681A1A1CF200F5E372 /* EleRecoId.ScaleFactor.wp95.2012ABCD.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = EleRecoId.ScaleFactor.wp95.2012ABCD.root; sourceTree = "<group>"; };
+		A7AE45691A1A1CF200F5E372 /* MuRecoId.ScaleFactor.2012ABCD.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuRecoId.ScaleFactor.2012ABCD.root; sourceTree = "<group>"; };
+		A7AE456A1A1A1CF200F5E372 /* Plot.C */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plot.C; sourceTree = "<group>"; };
+		A7AE456B1A1A1CF200F5E372 /* SingleEle.TrigEff.wp80.2012ABCD.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = SingleEle.TrigEff.wp80.2012ABCD.root; sourceTree = "<group>"; };
+		A7AE456C1A1A1CF200F5E372 /* SingleEle.TrigEff.wp95.2012ABCD.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = SingleEle.TrigEff.wp95.2012ABCD.root; sourceTree = "<group>"; };
+		A7AE456D1A1A1CF200F5E372 /* SingleMu24OR40.TrigEff.2012ABCD.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = SingleMu24OR40.TrigEff.2012ABCD.root; sourceTree = "<group>"; };
+		A7AE456E1A1A1CF200F5E372 /* TMVARegression_target-pt_gen_BDTG.weights.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "TMVARegression_target-pt_gen_BDTG.weights.xml"; sourceTree = "<group>"; };
+		A7AE456F1A1A1CF200F5E372 /* TMVARegression_target-pt_part_BDTG.weights.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "TMVARegression_target-pt_part_BDTG.weights.xml"; sourceTree = "<group>"; };
+		A7AE45701A1A1CF200F5E372 /* transferFunctionsNew_partonE_new.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = transferFunctionsNew_partonE_new.root; sourceTree = "<group>"; };
+		A7AE45711A1A1CF200F5E372 /* transferFunctionsTEST.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = transferFunctionsTEST.root; sourceTree = "<group>"; };
+		A7AE45721A1A1CF200F5E372 /* transferFunctionsTEST_reg.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = transferFunctionsTEST_reg.root; sourceTree = "<group>"; };
+		A7AE45731A1A1CF200F5E372 /* treeProducerTESTpt_gen.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = treeProducerTESTpt_gen.root; sourceTree = "<group>"; };
+		A7AE45741A1A1CF200F5E372 /* treeProducerTESTpt_part.root */ = {isa = PBXFileReference; lastKnownFileType = file; path = treeProducerTESTpt_part.root; sourceTree = "<group>"; };
+		A7AE45761A1A1CF200F5E372 /* TMVARegression_target-pt_gen_BDTG.weights.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "TMVARegression_target-pt_gen_BDTG.weights.xml"; sourceTree = "<group>"; };
+		A7AE45771A1A1CF200F5E372 /* TMVARegression_target-pt_part_BDTG.weights.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "TMVARegression_target-pt_part_BDTG.weights.xml"; sourceTree = "<group>"; };
+		A7AE45791A1A1CF200F5E372 /* BuildFile.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BuildFile.xml; sourceTree = "<group>"; };
+		A7AE457A1A1A1CF200F5E372 /* me_test_cfg.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = me_test_cfg.py; sourceTree = "<group>"; };
+		A7AE457B1A1A1CF200F5E372 /* MEAnalysis_cfg.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = MEAnalysis_cfg.py; sourceTree = "<group>"; };
+		A7AE457C1A1A1CF200F5E372 /* run_MEAnalysis.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = run_MEAnalysis.cc; sourceTree = "<group>"; };
+		A7AE457D1A1A1CF200F5E372 /* runtests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = runtests.sh; sourceTree = "<group>"; };
+		A7AE457F1A1A1D2D00F5E372 /* contents.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = contents.txt; sourceTree = "<group>"; };
+		A7AE45811A1A1D2D00F5E372 /* c_tthbb.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = c_tthbb.cfg; sourceTree = "<group>"; };
+		A7AE45821A1A1D2D00F5E372 /* c_tthbb.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = c_tthbb.py; sourceTree = "<group>"; };
+		A7AE45831A1A1D2D00F5E372 /* c_ttjets.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = c_ttjets.cfg; sourceTree = "<group>"; };
+		A7AE45841A1A1D2D00F5E372 /* c_ttjets.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = c_ttjets.py; sourceTree = "<group>"; };
+		A7AE45851A1A1D2D00F5E372 /* crab.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = crab.cfg; sourceTree = "<group>"; };
+		A7AE45861A1A1D2D00F5E372 /* crab.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = crab.py; sourceTree = "<group>"; };
+		A7AE45881A1A1D2D00F5E372 /* EventHypothesis.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EventHypothesis.hh; sourceTree = "<group>"; };
+		A7AE45891A1A1D2D00F5E372 /* HypoEnums.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HypoEnums.hh; sourceTree = "<group>"; };
+		A7AE458A1A1A1D2D00F5E372 /* tth_tree.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tth_tree.hh; sourceTree = "<group>"; };
+		A7AE458C1A1A1D2D00F5E372 /* BuildFile.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BuildFile.xml; sourceTree = "<group>"; };
+		A7AE458D1A1A1D2D00F5E372 /* TTHNtupleAnalyzer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TTHNtupleAnalyzer.cc; sourceTree = "<group>"; };
+		A7AE458F1A1A1D2D00F5E372 /* __init__.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		A7AE45901A1A1D2D00F5E372 /* CfiFile_cfi.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = CfiFile_cfi.py; sourceTree = "<group>"; };
+		A7AE45911A1A1D2D00F5E372 /* Main_cfg.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Main_cfg.py; sourceTree = "<group>"; };
+		A7AE45921A1A1D2D00F5E372 /* tree_doc.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = tree_doc.py; sourceTree = "<group>"; };
+		A7AE45931A1A1D2D00F5E372 /* triggers_MC_cff.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = triggers_MC_cff.py; sourceTree = "<group>"; };
+		A7AE45951A1A1D2D00F5E372 /* BuildFile.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BuildFile.xml; sourceTree = "<group>"; };
+		A7AE45961A1A1D2D00F5E372 /* print_tree.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = print_tree.py; sourceTree = "<group>"; };
+		A7AE45971A1A1D2D00F5E372 /* run_TTHNtupleAnalyzer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = run_TTHNtupleAnalyzer.cc; sourceTree = "<group>"; };
+		A7AE45981A1A1D2D00F5E372 /* runtests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = runtests.sh; sourceTree = "<group>"; };
+		A7AE45991A1A1D2D00F5E372 /* test_load.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = test_load.sh; sourceTree = "<group>"; };
+		A7AE459A1A1A1D2D00F5E372 /* ttbar_cfg.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = ttbar_cfg.py; sourceTree = "<group>"; };
+		A7AE459B1A1A1D2D00F5E372 /* ttbar_test.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = ttbar_test.py; sourceTree = "<group>"; };
+		A7AE459C1A1A1D2D00F5E372 /* tree_header.jl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tree_header.jl; sourceTree = "<group>"; };
+		A7AE459D1A1A32A200F5E372 /* headergen.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = headergen.py; path = ../../TTHNtupleAnalyzer/python/headergen.py; sourceTree = "<group>"; };
+		A7AE459E1A1A388400F5E372 /* perms.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = perms.py; path = python/perms.py; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		A7AE45241A1A1BB600F5E372 = {
+			isa = PBXGroup;
+			children = (
+				A7AE459E1A1A388400F5E372 /* perms.py */,
+				A7AE457E1A1A1D2D00F5E372 /* TTHNtupleAnalyzer */,
+				A7AE45401A1A1CF200F5E372 /* MEAnalysis */,
+				A7AE453E1A1A1CA700F5E372 /* cuts.py */,
+				A7AE453F1A1A1CA700F5E372 /* run_cuts.py */,
+				A7AE452F1A1A1C3800F5E372 /* MEStudiesJP */,
+			);
+			sourceTree = "<group>";
+		};
+		A7AE452F1A1A1C3800F5E372 /* MEStudiesJP */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE45301A1A1C3800F5E372 /* bin */,
+				A7AE45381A1A1C3800F5E372 /* python */,
+			);
+			name = MEStudiesJP;
+			sourceTree = "<group>";
+		};
+		A7AE45301A1A1C3800F5E372 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE45311A1A1C3800F5E372 /* BuildFile.xml */,
+				A7AE45321A1A1C3800F5E372 /* cutflow.cc */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		A7AE45381A1A1C3800F5E372 /* python */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE45391A1A1C3800F5E372 /* __init__.py */,
+				A7AE453B1A1A1C3800F5E372 /* cutflow.py */,
+			);
+			path = python;
+			sourceTree = "<group>";
+		};
+		A7AE45401A1A1CF200F5E372 /* MEAnalysis */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE45411A1A1CF200F5E372 /* bin */,
+				A7AE45451A1A1CF200F5E372 /* interface */,
+				A7AE454B1A1A1CF200F5E372 /* libs */,
+				A7AE45551A1A1CF200F5E372 /* python */,
+				A7AE455F1A1A1CF200F5E372 /* root */,
+				A7AE45781A1A1CF200F5E372 /* test */,
+			);
+			name = MEAnalysis;
+			path = ../MEAnalysis;
+			sourceTree = "<group>";
+		};
+		A7AE45411A1A1CF200F5E372 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE45421A1A1CF200F5E372 /* analyze_input_tree.py */,
+				A7AE45431A1A1CF200F5E372 /* BuildFile.xml */,
+				A7AE45441A1A1CF200F5E372 /* MEAnalysis.cc */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		A7AE45451A1A1CF200F5E372 /* interface */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE45461A1A1CF200F5E372 /* HelperFunctions.h */,
+				A7AE45471A1A1CF200F5E372 /* MECombination.h */,
+				A7AE45481A1A1CF200F5E372 /* MEIntegratorNew.h */,
+				A7AE45491A1A1CF200F5E372 /* METree.hh */,
+				A7AE459D1A1A32A200F5E372 /* headergen.py */,
+				A7AE454A1A1A1CF200F5E372 /* Samples.h */,
+			);
+			path = interface;
+			sourceTree = "<group>";
+		};
+		A7AE454B1A1A1CF200F5E372 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE454C1A1A1CF200F5E372 /* libbar.so */,
+				A7AE454D1A1A1CF200F5E372 /* libcoli.so */,
+				A7AE454E1A1A1CF200F5E372 /* libopenloops.so */,
+				A7AE454F1A1A1CF200F5E372 /* libopenloops_ppHtt_1tL.so */,
+				A7AE45501A1A1CF200F5E372 /* libopenloops_ppttbb_1tL.so */,
+				A7AE45511A1A1CF200F5E372 /* libopenloops_ppttj_1tL.so */,
+				A7AE45521A1A1CF200F5E372 /* libpphttxcallme2born.so */,
+				A7AE45531A1A1CF200F5E372 /* libppttxbbxcallme2born.so */,
+				A7AE45541A1A1CF200F5E372 /* libppttxjcallme2born.so */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		A7AE45551A1A1CF200F5E372 /* python */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE45561A1A1CF200F5E372 /* __init__.py */,
+				A7AE45571A1A1CF200F5E372 /* MEAnalysis_cfg.py */,
+				A7AE45581A1A1CF200F5E372 /* meAnalysisNew_all_8TeV.py */,
+				A7AE45591A1A1CF200F5E372 /* mem_categories_cff.py */,
+				A7AE455A1A1A1CF200F5E372 /* mem_parameters_cff.py */,
+				A7AE455B1A1A1CF200F5E372 /* samples_cff.py */,
+				A7AE455C1A1A1CF200F5E372 /* samples_v1.py */,
+				A7AE455D1A1A1CF200F5E372 /* submitAllMEAnalysis.py */,
+				A7AE455E1A1A1CF200F5E372 /* test_cfg.py */,
+			);
+			path = python;
+			sourceTree = "<group>";
+		};
+		A7AE455F1A1A1CF200F5E372 /* root */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE45601A1A1CF200F5E372 /* ControlPlotsTEST.root */,
+				A7AE45611A1A1CF200F5E372 /* ControlPlotsTEST_reg.root */,
+				A7AE45621A1A1CF200F5E372 /* ControlPlotsTEST_std_gen.root */,
+				A7AE45631A1A1CF200F5E372 /* csv_rwt_hf.root */,
+				A7AE45641A1A1CF200F5E372 /* csv_rwt_lf.root */,
+				A7AE45651A1A1CF200F5E372 /* DoubleEle17.TrigEff.wp95.2012ABCD.root */,
+				A7AE45661A1A1CF200F5E372 /* DoubleEle8.TrigEff.wp95.2012ABCD.root */,
+				A7AE45671A1A1CF200F5E372 /* EleRecoId.ScaleFactor.wp80.2012ABCD.root */,
+				A7AE45681A1A1CF200F5E372 /* EleRecoId.ScaleFactor.wp95.2012ABCD.root */,
+				A7AE45691A1A1CF200F5E372 /* MuRecoId.ScaleFactor.2012ABCD.root */,
+				A7AE456A1A1A1CF200F5E372 /* Plot.C */,
+				A7AE456B1A1A1CF200F5E372 /* SingleEle.TrigEff.wp80.2012ABCD.root */,
+				A7AE456C1A1A1CF200F5E372 /* SingleEle.TrigEff.wp95.2012ABCD.root */,
+				A7AE456D1A1A1CF200F5E372 /* SingleMu24OR40.TrigEff.2012ABCD.root */,
+				A7AE456E1A1A1CF200F5E372 /* TMVARegression_target-pt_gen_BDTG.weights.xml */,
+				A7AE456F1A1A1CF200F5E372 /* TMVARegression_target-pt_part_BDTG.weights.xml */,
+				A7AE45701A1A1CF200F5E372 /* transferFunctionsNew_partonE_new.root */,
+				A7AE45711A1A1CF200F5E372 /* transferFunctionsTEST.root */,
+				A7AE45721A1A1CF200F5E372 /* transferFunctionsTEST_reg.root */,
+				A7AE45731A1A1CF200F5E372 /* treeProducerTESTpt_gen.root */,
+				A7AE45741A1A1CF200F5E372 /* treeProducerTESTpt_part.root */,
+				A7AE45751A1A1CF200F5E372 /* weights */,
+			);
+			path = root;
+			sourceTree = "<group>";
+		};
+		A7AE45751A1A1CF200F5E372 /* weights */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE45761A1A1CF200F5E372 /* TMVARegression_target-pt_gen_BDTG.weights.xml */,
+				A7AE45771A1A1CF200F5E372 /* TMVARegression_target-pt_part_BDTG.weights.xml */,
+			);
+			path = weights;
+			sourceTree = "<group>";
+		};
+		A7AE45781A1A1CF200F5E372 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE45791A1A1CF200F5E372 /* BuildFile.xml */,
+				A7AE457A1A1A1CF200F5E372 /* me_test_cfg.py */,
+				A7AE457B1A1A1CF200F5E372 /* MEAnalysis_cfg.py */,
+				A7AE457C1A1A1CF200F5E372 /* run_MEAnalysis.cc */,
+				A7AE457D1A1A1CF200F5E372 /* runtests.sh */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		A7AE457E1A1A1D2D00F5E372 /* TTHNtupleAnalyzer */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE457F1A1A1D2D00F5E372 /* contents.txt */,
+				A7AE45801A1A1D2D00F5E372 /* crab_configs */,
+				A7AE45871A1A1D2D00F5E372 /* interface */,
+				A7AE458B1A1A1D2D00F5E372 /* plugins */,
+				A7AE458E1A1A1D2D00F5E372 /* python */,
+				A7AE45941A1A1D2D00F5E372 /* test */,
+				A7AE459C1A1A1D2D00F5E372 /* tree_header.jl */,
+			);
+			name = TTHNtupleAnalyzer;
+			path = ../TTHNtupleAnalyzer;
+			sourceTree = "<group>";
+		};
+		A7AE45801A1A1D2D00F5E372 /* crab_configs */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE45811A1A1D2D00F5E372 /* c_tthbb.cfg */,
+				A7AE45821A1A1D2D00F5E372 /* c_tthbb.py */,
+				A7AE45831A1A1D2D00F5E372 /* c_ttjets.cfg */,
+				A7AE45841A1A1D2D00F5E372 /* c_ttjets.py */,
+				A7AE45851A1A1D2D00F5E372 /* crab.cfg */,
+				A7AE45861A1A1D2D00F5E372 /* crab.py */,
+			);
+			path = crab_configs;
+			sourceTree = "<group>";
+		};
+		A7AE45871A1A1D2D00F5E372 /* interface */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE45881A1A1D2D00F5E372 /* EventHypothesis.hh */,
+				A7AE45891A1A1D2D00F5E372 /* HypoEnums.hh */,
+				A7AE458A1A1A1D2D00F5E372 /* tth_tree.hh */,
+			);
+			path = interface;
+			sourceTree = "<group>";
+		};
+		A7AE458B1A1A1D2D00F5E372 /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE458C1A1A1D2D00F5E372 /* BuildFile.xml */,
+				A7AE458D1A1A1D2D00F5E372 /* TTHNtupleAnalyzer.cc */,
+			);
+			path = plugins;
+			sourceTree = "<group>";
+		};
+		A7AE458E1A1A1D2D00F5E372 /* python */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE458F1A1A1D2D00F5E372 /* __init__.py */,
+				A7AE45901A1A1D2D00F5E372 /* CfiFile_cfi.py */,
+				A7AE45911A1A1D2D00F5E372 /* Main_cfg.py */,
+				A7AE45921A1A1D2D00F5E372 /* tree_doc.py */,
+				A7AE45931A1A1D2D00F5E372 /* triggers_MC_cff.py */,
+			);
+			path = python;
+			sourceTree = "<group>";
+		};
+		A7AE45941A1A1D2D00F5E372 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE45951A1A1D2D00F5E372 /* BuildFile.xml */,
+				A7AE45961A1A1D2D00F5E372 /* print_tree.py */,
+				A7AE45971A1A1D2D00F5E372 /* run_TTHNtupleAnalyzer.cc */,
+				A7AE45981A1A1D2D00F5E372 /* runtests.sh */,
+				A7AE45991A1A1D2D00F5E372 /* test_load.sh */,
+				A7AE459A1A1A1D2D00F5E372 /* ttbar_cfg.py */,
+				A7AE459B1A1A1D2D00F5E372 /* ttbar_test.py */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		A7AE45291A1A1BB600F5E372 /* MEStudiesJP */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = build;
+			buildConfigurationList = A7AE452C1A1A1BB600F5E372 /* Build configuration list for PBXLegacyTarget "MEStudiesJP" */;
+			buildPhases = (
+			);
+			buildToolPath = "/Users/joosep/cmssw-apt/common/scram";
+			buildWorkingDirectory = /Users/joosep/Documents/tthbb13/CMSSW/src/TTH/MEStudiesJP;
+			dependencies = (
+			);
+			name = MEStudiesJP;
+			passBuildSettingsInEnvironment = 1;
+			productName = MEStudiesJP;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		A7AE45251A1A1BB600F5E372 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Joosep Pata";
+				TargetAttributes = {
+					A7AE45291A1A1BB600F5E372 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = A7AE45281A1A1BB600F5E372 /* Build configuration list for PBXProject "MEStudiesJP" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A7AE45241A1A1BB600F5E372;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A7AE45291A1A1BB600F5E372 /* MEStudiesJP */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		A7AE452A1A1A1BB600F5E372 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A7AE452B1A1A1BB600F5E372 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A7AE452D1A1A1BB600F5E372 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A7AE452E1A1A1BB600F5E372 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A7AE45281A1A1BB600F5E372 /* Build configuration list for PBXProject "MEStudiesJP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7AE452A1A1A1BB600F5E372 /* Debug */,
+				A7AE452B1A1A1BB600F5E372 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7AE452C1A1A1BB600F5E372 /* Build configuration list for PBXLegacyTarget "MEStudiesJP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7AE452D1A1A1BB600F5E372 /* Debug */,
+				A7AE452E1A1A1BB600F5E372 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A7AE45251A1A1BB600F5E372 /* Project object */;
+}

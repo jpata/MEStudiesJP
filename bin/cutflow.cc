@@ -196,6 +196,16 @@ T* add_hist_2d(std::map<std::string, TH1*>& histmap, string hname, double b11, d
     return (T*)histmap[hname];
 }
 
+bool is_correct_perm(int perm, MECategory cat) {
+    if (cat==CAT1 || cat==CAT2 || cat==CAT3) {
+        return (perm >= 111100); //
+    }
+    if (cat == CAT6) {
+        return (perm >= 100111);
+    }
+    return false;
+}
+
 int main(int argc, const char* argv[])
 {
     gROOT->SetBatch(true);
@@ -243,7 +253,7 @@ int main(int argc, const char* argv[])
         TH1D* h_lep_riso_sl = add_hist_1d<TH1D>(histmap, pf + "lepton_riso_sl", 0, 0.2, 40);
         TH1D* h_lep1_riso_dl = add_hist_1d<TH1D>(histmap, pf + "lepton1_riso_dl", 0, 0.2, 40);
         TH1D* h_lep2_riso_dl = add_hist_1d<TH1D>(histmap, pf + "lepton2_riso_dl", 0, 0.2, 40);
-
+        
         
         TH1D* h_Vtype = add_hist_1d<TH1D>(histmap, pf + "Vtype", 0, 10);
         TH1D* h_type = add_hist_1d<TH1D>(histmap, pf + "type", 0, 10);
@@ -257,7 +267,11 @@ int main(int argc, const char* argv[])
         TH1D* h_proc = add_hist_1d<TH1D>(histmap, pf + "processed", 0, 2);
         
         TH2D* h_cat_btaglr = add_hist_2d<TH2D>(histmap, pf + "cat_btag_lr", 0, 8, 8, 0, 1, 20);
-
+        
+        
+        TH2D* h_nperm_s_btaglr = add_hist_2d<TH2D>(histmap, pf + "nperm_s_btag_lr", 0, 3, 3, 0, 1, 200);
+        TH2D* h_nperm_b_btaglr = add_hist_2d<TH2D>(histmap, pf + "nperm_b_btag_lr", 0, 3, 3, 0, 1, 200);
+        
         
         TH2D* h_cat_discr = 0;
         if (sample_type == ME_8TEV || sample_type == ME_13TEV) {
@@ -326,14 +340,14 @@ int main(int argc, const char* argv[])
             const bool* trf = t.triggerFlags_;
             
             
-//#    #// OR of four trigger paths:  "HLT_Mu40_eta2p1_v.*", "HLT_IsoMu24_eta2p1_v.*", "HLT_Mu40_v.*",  "HLT_IsoMu24_v.*"
-//#    #int trigVtype2 =  (Vtype==2 && ( triggerFlags[22]>0 || triggerFlags[23]>0 || triggerFlags[14]>0 ||triggerFlags[21]>0 ));
-//#    #// OR of two trigger paths:   "HLT_Ele27_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_v.*", "HLT_Ele27_WP80_v.*"
-//#    #int trigVtype3 =  (Vtype==3 &&  triggerFlags[44]>0 );⇥␣
-//#    # // OR of four trigger paths:  "HLT_Mu40_eta2p1_v.*", "HLT_IsoMu24_eta2p1_v.*", "HLT_Mu40_v.*",  "HLT_IsoMu24_v.*"
-//#    #int trigVtype0 =  (Vtype==0 && ( triggerFlags[22]>0 || triggerFlags[23]>0 || triggerFlags[14]>0 ||triggerFlags[21]>0 ));
-//#    #// OR of two trigger paths:    "HLT_Ele17_CaloIdL_CaloIsoVL_Ele8_CaloIdL_CaloIsoVL_v.*",
-//
+            //#    #// OR of four trigger paths:  "HLT_Mu40_eta2p1_v.*", "HLT_IsoMu24_eta2p1_v.*", "HLT_Mu40_v.*",  "HLT_IsoMu24_v.*"
+            //#    #int trigVtype2 =  (Vtype==2 && ( triggerFlags[22]>0 || triggerFlags[23]>0 || triggerFlags[14]>0 ||triggerFlags[21]>0 ));
+            //#    #// OR of two trigger paths:   "HLT_Ele27_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_v.*", "HLT_Ele27_WP80_v.*"
+            //#    #int trigVtype3 =  (Vtype==3 &&  triggerFlags[44]>0 );⇥␣
+            //#    # // OR of four trigger paths:  "HLT_Mu40_eta2p1_v.*", "HLT_IsoMu24_eta2p1_v.*", "HLT_Mu40_v.*",  "HLT_IsoMu24_v.*"
+            //#    #int trigVtype0 =  (Vtype==0 && ( triggerFlags[22]>0 || triggerFlags[23]>0 || triggerFlags[14]>0 ||triggerFlags[21]>0 ));
+            //#    #// OR of two trigger paths:    "HLT_Ele17_CaloIdL_CaloIsoVL_Ele8_CaloIdL_CaloIsoVL_v.*",
+            //
             h_triggers->Fill(0);
             bool trig_mu = trf[22]==1 || trf[23]==1 || trf[14]==1 || trf[21]==1;
             bool trig_ele = trf[44]==1;
@@ -351,7 +365,7 @@ int main(int argc, const char* argv[])
             //                    std::cout << trf[j];
             //                std::cout << endl;
             //            }
-
+            
             //Single lepton cuts
             if (is_sl) {
                 const float lep_pt1 = t.lepton_pt_[0];
@@ -377,7 +391,7 @@ int main(int argc, const char* argv[])
                 
                 h_lep1_riso_dl->Fill(t.lepton_rIso_[0]);
                 h_lep2_riso_dl->Fill(t.lepton_rIso_[1]);
-
+                
             }
             
             MECategory cat = assign_me_category(&t, sample_type);
@@ -391,10 +405,9 @@ int main(int argc, const char* argv[])
             h_cat_btaglr->Fill(cat, t.btag_LR_);
             
             int btag_lr_cat = is_btag_lr_high_low(&t, cat);
-
+            
             if (btag_lr_cat == 1) {
                 h_catH->Fill(cat);
-                
             } else if (btag_lr_cat == 0) {
                 h_catL->Fill(cat);
             }
@@ -413,16 +426,33 @@ int main(int argc, const char* argv[])
                 if (btag_lr_cat == 1) {
                     h_cat_discr->Fill(cat, me_discr);
                 }
+                
+                int n_correct_perm_s = 0;
+                int n_correct_perm_b = 0;
+                
+                for (int np=0; np<t.nPermut_; np++) {
+                    if (is_correct_perm(t.perm_to_gen_[np], cat)) {
+                        n_correct_perm_s += 1;
+                    }
+                }
+                for (int np=0; np<t.nPermut_alt_; np++) {
+                    if (is_correct_perm(t.perm_to_gen_alt_[np], cat)) {
+                        n_correct_perm_b += 1;
+                    }
+                }
+                
+                h_nperm_s_btaglr->Fill(n_correct_perm_s, t.btag_LR_);
+                h_nperm_b_btaglr->Fill(n_correct_perm_b, t.btag_LR_);
+                
+                h_proc->Fill(2);
             }
-            
-            h_proc->Fill(2);
         }
-        
         
         std::cout << "read " << nbytes/1024/1024 << " Mb" << std::endl;
         std::cout << "processed " << n_total_entries << " in "
-        << tottime << std::endl ;
+        << tottime << " seconds" << std::endl ;
         tf->Close();
+        
     }
     
     TFile* outfile = new TFile("outfile.root", "RECREATE");
