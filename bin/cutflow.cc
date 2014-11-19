@@ -205,7 +205,7 @@ bool is_correct_perm(int perm, MECategory cat, Process prc) {
     if (cat==CAT1 || cat==CAT2 || cat==CAT3) {
         return ((perm == 111111) && prc==TTHBB) || ((perm == 111100) && prc==TTJETS); //
     }
-    if (cat == CAT6) {
+    if (cat == CAT6ee || cat == CAT6emu || cat == CAT6mumu) {
         return ((perm == 100111) && prc==TTHBB) || ((perm == 100100) && prc==TTJETS);
     }
     return false;
@@ -282,6 +282,9 @@ int main(int argc, const char* argv[])
         
         TH2D* h_nperm_s_me = add_hist_2d<TH2D>(histmap, pf + "nperm_s_me", 0, 3, 3, 0.0, 1.0, 6);
         TH2D* h_nperm_b_me = add_hist_2d<TH2D>(histmap, pf + "nperm_b_me", 0, 3, 3, 0.0, 1.0, 6);
+        
+        TH2D* h_nperm_s_cat = add_hist_2d<TH2D>(histmap, pf + "nperm_s_cat", 0, 3, 3, 0, 8, 8);
+        TH2D* h_nperm_b_cat = add_hist_2d<TH2D>(histmap, pf + "nperm_b_cat", 0, 3, 3, 0, 8, 8);
         
         
         TH2D* h_cat_discr = 0;
@@ -443,13 +446,24 @@ int main(int argc, const char* argv[])
                 int n_correct_perm_b = 0;
                 
                 for (int np=0; np<t.nPermut_; np++) {
+                    
+//                    if (cat == CAT6mumu || cat==CAT6emu || cat==CAT6ee) {
+//                        std::cout << "CAT6 perm " << t.perm_to_gen_[np] << " " << is_correct_perm(t.perm_to_gen_[np], cat, process) << std::endl;
+//                    }
+                    
                     if (is_correct_perm(t.perm_to_gen_[np], cat, process)) {
                         n_correct_perm_s += 1;
+                        
+//                        if (cat == CAT6mumu || cat==CAT6emu || cat==CAT6ee) {
+//                            std::cout << "correct perm " << t.perm_to_gen_[np] << " "
+//                            << cat << " " << t.btag_LR_ << " " << btag_lr_cat << std::endl;
+//                        }
+                        
                     }
                     
-                    if (i<100) {
-                        std::cout << "perm s " << t.perm_to_gen_[np] << std::endl;
-                    }
+//                    if (i<100) {
+//                        std::cout << "perm s " << t.perm_to_gen_[np] << std::endl;
+//                    }
                     
                 }
                 for (int np=0; np<t.nPermut_alt_; np++) {
@@ -457,18 +471,26 @@ int main(int argc, const char* argv[])
                         n_correct_perm_b += 1;
                     }
                     
-                    if (i<100) {
-                        std::cout << "perm b " << t.perm_to_gen_alt_[np] << std::endl;
-                    }
+//                    if (i<100) {
+//                        std::cout << "perm b " << t.perm_to_gen_alt_[np] << std::endl;
+//                    }
                 }
                 
                 
-
+                
                 if (btag_lr_cat == 1) {
+                    
+//                    if (cat == CAT6mumu || cat==CAT6emu || cat==CAT6ee) {
+//                        std::cout << "CAT6 nperm " << n_correct_perm_s << std::endl;
+//                    }
+                    
                     h_nperm_s_btaglr->Fill(n_correct_perm_s, t.btag_LR_);
                     h_nperm_b_btaglr->Fill(n_correct_perm_b, t.btag_LR_);
                     h_nperm_s_me->Fill(n_correct_perm_s, me_discr);
                     h_nperm_b_me->Fill(n_correct_perm_b, me_discr);
+                    
+                    h_nperm_s_cat->Fill(n_correct_perm_s, cat);
+                    h_nperm_b_cat->Fill(n_correct_perm_b, cat);
                 }
                 
                 h_proc->Fill(2);
