@@ -48,6 +48,11 @@ enum SampleType {
     ME_13TEV
 };
 
+enum Process {
+    TTHBB,
+    TTJETS
+};
+
 enum MECategory {
     UNKNOWN_CAT,
     CAT1,
@@ -196,12 +201,12 @@ T* add_hist_2d(std::map<std::string, TH1*>& histmap, string hname, double b11, d
     return (T*)histmap[hname];
 }
 
-bool is_correct_perm(int perm, MECategory cat) {
+bool is_correct_perm(int perm, MECategory cat, Process prc) {
     if (cat==CAT1 || cat==CAT2 || cat==CAT3) {
-        return (perm >= 111100); //
+        return ((perm == 111111) && prc==TTHBB) || ((perm == 111100) && prc==TTJETS); //
     }
     if (cat == CAT6) {
-        return (perm >= 100111);
+        return ((perm == 100111) && prc==TTHBB) || ((perm == 100100) && prc==TTJETS);
     }
     return false;
 }
@@ -242,6 +247,9 @@ int main(int argc, const char* argv[])
         //sample type, which may affect the meaning/contents of the TTrees
         const SampleType sample_type = static_cast<SampleType>(sample.getParameter<int>("type"));
         
+        //sample type, which may affect the meaning/contents of the TTrees
+        const Process process = static_cast<Process>(sample.getParameter<int>("process"));
+        
         //create output histograms
         const string pf = sample_nick + "_";
         TH1D* h_nj_sl = add_hist_1d<TH1D>(histmap, pf + "numJets_sl", 5, 12);
@@ -269,8 +277,11 @@ int main(int argc, const char* argv[])
         TH2D* h_cat_btaglr = add_hist_2d<TH2D>(histmap, pf + "cat_btag_lr", 0, 8, 8, 0, 1, 20);
         
         
-        TH2D* h_nperm_s_btaglr = add_hist_2d<TH2D>(histmap, pf + "nperm_s_btag_lr", 0, 3, 3, 0, 1, 200);
-        TH2D* h_nperm_b_btaglr = add_hist_2d<TH2D>(histmap, pf + "nperm_b_btag_lr", 0, 3, 3, 0, 1, 200);
+        TH2D* h_nperm_s_btaglr = add_hist_2d<TH2D>(histmap, pf + "nperm_s_btag_lr", 0, 3, 3, 0.9, 1, 10);
+        TH2D* h_nperm_b_btaglr = add_hist_2d<TH2D>(histmap, pf + "nperm_b_btag_lr", 0, 3, 3, 0.9, 1, 10);
+        
+        TH2D* h_nperm_s_me = add_hist_2d<TH2D>(histmap, pf + "nperm_s_me", 0, 3, 3, 0.0, 1.0, 6);
+        TH2D* h_nperm_b_me = add_hist_2d<TH2D>(histmap, pf + "nperm_b_me", 0, 3, 3, 0.0, 1.0, 6);
         
         
         TH2D* h_cat_discr = 0;
@@ -404,6 +415,7 @@ int main(int argc, const char* argv[])
             
             h_cat_btaglr->Fill(cat, t.btag_LR_);
             
+            //passes btag LR cut
             int btag_lr_cat = is_btag_lr_high_low(&t, cat);
             
             if (btag_lr_cat == 1) {
@@ -431,18 +443,33 @@ int main(int argc, const char* argv[])
                 int n_correct_perm_b = 0;
                 
                 for (int np=0; np<t.nPermut_; np++) {
-                    if (is_correct_perm(t.perm_to_gen_[np], cat)) {
+                    if (is_correct_perm(t.perm_to_gen_[np], cat, process)) {
                         n_correct_perm_s += 1;
                     }
+                    
+                    if (i<100) {
+                        std::cout << "perm s " << t.perm_to_gen_[np] << std::endl;
+                    }
+                    
                 }
                 for (int np=0; np<t.nPermut_alt_; np++) {
-                    if (is_correct_perm(t.perm_to_gen_alt_[np], cat)) {
+                    if (is_correct_perm(t.perm_to_gen_alt_[np], cat, process)) {
                         n_correct_perm_b += 1;
+                    }
+                    
+                    if (i<100) {
+                        std::cout << "perm b " << t.perm_to_gen_alt_[np] << std::endl;
                     }
                 }
                 
-                h_nperm_s_btaglr->Fill(n_correct_perm_s, t.btag_LR_);
-                h_nperm_b_btaglr->Fill(n_correct_perm_b, t.btag_LR_);
+                
+
+                if (btag_lr_cat == 1) {
+                    h_nperm_s_btaglr->Fill(n_correct_perm_s, t.btag_LR_);
+                    h_nperm_b_btaglr->Fill(n_correct_perm_b, t.btag_LR_);
+                    h_nperm_s_me->Fill(n_correct_perm_s, me_discr);
+                    h_nperm_b_me->Fill(n_correct_perm_b, me_discr);
+                }
                 
                 h_proc->Fill(2);
             }
