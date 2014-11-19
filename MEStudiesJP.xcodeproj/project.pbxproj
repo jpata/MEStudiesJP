@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		A75D8D9B1A1CEE6300A9FA68 /* cutflow_step1.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = cutflow_step1.py; sourceTree = "<group>"; };
+		A75D8D9C1A1CEE6800A9FA68 /* cutflow_step1.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cutflow_step1.cc; sourceTree = "<group>"; };
 		A7AE45311A1A1C3800F5E372 /* BuildFile.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BuildFile.xml; sourceTree = "<group>"; };
 		A7AE45321A1A1C3800F5E372 /* cutflow.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cutflow.cc; sourceTree = "<group>"; };
 		A7AE45391A1A1C3800F5E372 /* __init__.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
@@ -91,7 +93,6 @@
 		A7AE45991A1A1D2D00F5E372 /* test_load.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = test_load.sh; sourceTree = "<group>"; };
 		A7AE459A1A1A1D2D00F5E372 /* ttbar_cfg.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = ttbar_cfg.py; sourceTree = "<group>"; };
 		A7AE459B1A1A1D2D00F5E372 /* ttbar_test.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = ttbar_test.py; sourceTree = "<group>"; };
-		A7AE459C1A1A1D2D00F5E372 /* tree_header.jl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tree_header.jl; sourceTree = "<group>"; };
 		A7AE459D1A1A32A200F5E372 /* headergen.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = headergen.py; path = ../../TTHNtupleAnalyzer/python/headergen.py; sourceTree = "<group>"; };
 		A7AE459E1A1A388400F5E372 /* perms.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = perms.py; path = python/perms.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +122,7 @@
 		A7AE45301A1A1C3800F5E372 /* bin */ = {
 			isa = PBXGroup;
 			children = (
+				A75D8D9C1A1CEE6800A9FA68 /* cutflow_step1.cc */,
 				A7AE45311A1A1C3800F5E372 /* BuildFile.xml */,
 				A7AE45321A1A1C3800F5E372 /* cutflow.cc */,
 			);
@@ -130,6 +132,7 @@
 		A7AE45381A1A1C3800F5E372 /* python */ = {
 			isa = PBXGroup;
 			children = (
+				A75D8D9B1A1CEE6300A9FA68 /* cutflow_step1.py */,
 				A7AE45391A1A1C3800F5E372 /* __init__.py */,
 				A7AE453B1A1A1C3800F5E372 /* cutflow.py */,
 			);
@@ -264,7 +267,6 @@
 				A7AE458B1A1A1D2D00F5E372 /* plugins */,
 				A7AE458E1A1A1D2D00F5E372 /* python */,
 				A7AE45941A1A1D2D00F5E372 /* test */,
-				A7AE459C1A1A1D2D00F5E372 /* tree_header.jl */,
 			);
 			name = TTHNtupleAnalyzer;
 			path = ../TTHNtupleAnalyzer;
