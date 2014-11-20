@@ -13,7 +13,8 @@
 #include "TFile.h"
 #include "TTree.h"
 #include "TH1D.h"
-#include "TH2F.h"
+#include "TH2D.h"
+#include "TH3D.h"
 #include "THStack.h"
 #include "TF1.h"
 #include "TF2.h"
@@ -39,6 +40,34 @@
 #include "TTH/TTHNtupleAnalyzer/interface/tth_tree.hh"
 
 using namespace std;
+
+template <class T>
+T* add_hist_1d(std::map<std::string, TH1*>& histmap, string hname, int b1, int b2) {
+    histmap[hname] = new T(hname.c_str(), hname.c_str(), b2-b1, b1, b2);
+    histmap[hname]->Sumw2();
+    return (T*)histmap[hname];
+}
+
+template <class T>
+T* add_hist_1d(std::map<std::string, TH1*>& histmap, string hname, double b1, double b2, int nb) {
+    histmap[hname] = new T(hname.c_str(), hname.c_str(), nb, b1, b2);
+    histmap[hname]->Sumw2();
+    return (T*)histmap[hname];
+}
+
+template <class T>
+T* add_hist_2d(std::map<std::string, TH1*>& histmap, string hname, double b11, double b21, int nb1, double b12, double b22, int nb2) {
+    histmap[hname] = new T(hname.c_str(), hname.c_str(), nb1, b11, b21, nb2, b12, b22);
+    histmap[hname]->Sumw2();
+    return (T*)histmap[hname];
+}
+
+template <class T>
+T* add_hist_3d(std::map<std::string, TH1*>& histmap, string hname, double b11, double b21, int nb1, double b12, double b22, int nb2, double b13, double b23, int nb3) {
+    histmap[hname] = new T(hname.c_str(), hname.c_str(), nb1, b11, b21, nb2, b12, b22, nb3, b13, b23);
+    histmap[hname]->Sumw2();
+    return (T*)histmap[hname];
+}
 
 int main(int argc, const char* argv[])
 {
@@ -67,8 +96,7 @@ int main(int argc, const char* argv[])
     double tottime = 0.0;
     
     
-    TFile* outfile = new TFile("outfile.root", "RECREATE");
-    outfile->cd();
+    TFile* outfile = new TFile("outfile_step1.root", "RECREATE");
 
     for(auto& sample : samples ) {
         
@@ -86,6 +114,17 @@ int main(int argc, const char* argv[])
             std::cerr << "ERROR: could not open file " << sample_fn << " " << tf << std::endl;
             throw std::exception();
         }
+        
+        const std::string pf(sample_nick + "_");
+        outfile->cd();
+        TH2D* h_lep_pt_iso_mu = add_hist_2d<TH2D>(histmap, pf+"lep_pt_iso_mu", 0, 600, 60, 0, 5, 20);
+        TH2D* h_lep_pt_iso_ele = add_hist_2d<TH2D>(histmap, pf+"lep_pt_iso_ele", 0, 600, 60, 0, 5, 20);
+        
+        TH3D* h_lep_pt_iso_npv_mu = add_hist_3d<TH3D>(histmap, pf+"lep_pt_iso_npv_mu", 0, 600, 60, 0, 5, 20, 0, 50, 50);
+        TH3D* h_lep_pt_iso_npv_ele = add_hist_3d<TH3D>(histmap, pf+"lep_pt_iso_npv_ele", 0, 600, 60, 0, 5, 20, 0, 50, 50);
+        
+        TH3D* h_lep_pt_iso2_npv_mu = add_hist_3d<TH3D>(histmap, pf+"lep_pt_iso2_npv_mu", 0, 600, 60, 0, 0.2, 100, 0, 50, 50);
+        TH3D* h_lep_pt_iso2_npv_ele = add_hist_3d<TH3D>(histmap, pf+"lep_pt_iso2_npv_ele", 0, 600, 60, 0, 0.2, 100, 0, 50, 50);
         
         //create ME TTree and branch variables
         TTHTree t((TTree*)(tf->Get("tthNtupleAnalyzer/events")));
@@ -121,9 +160,24 @@ int main(int argc, const char* argv[])
             nbytes += t.tree->GetEntry(i);
             
             int nlep = t.n__lep;
+            
+            float npv = t.n__pv;
+            
             for(int nl=0; nl < nlep; nl++) {
+                
                 float pt = t.lep__pt[nl];
+                int id = t.lep__id[nl];
                 float iso = t.lep__rel_iso[nl];
+                
+                if (std::abs(id) == 13) {
+                    h_lep_pt_iso_mu->Fill(pt, iso, 1.0);
+                    h_lep_pt_iso_npv_mu->Fill(pt, iso, npv, 1.0);
+                    h_lep_pt_iso2_npv_mu->Fill(pt, iso, npv, 1.0);
+                } else if (std::abs(id) == 11) {
+                    h_lep_pt_iso_ele->Fill(pt, iso, 1.0);
+                    h_lep_pt_iso_npv_ele->Fill(pt, iso, npv, 1.0);
+                    h_lep_pt_iso2_npv_ele->Fill(pt, iso, npv, 1.0);
+                }
             }
         }
         
