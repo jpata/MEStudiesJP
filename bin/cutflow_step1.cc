@@ -117,7 +117,15 @@ int main(int argc, const char* argv[])
         
         const std::string pf(sample_nick + "_");
         outfile->cd();
-        TH2D* h_lep_pt_iso_mu = add_hist_2d<TH2D>(histmap, pf+"lep_pt_iso_mu", 0, 600, 60, 0, 5, 20);
+        
+		TH1D* h_top1_mass = add_hist_1d<TH1D>(histmap, pf+"top1_mass", 100, 400, 60);
+		TH1D* h_top2_mass = add_hist_1d<TH1D>(histmap, pf+"top2_mass", 100, 400, 60);
+		TH1D* h_d_top_mass = add_hist_1d<TH1D>(histmap, pf+"d_top_mass", 100, 400, 60);
+		TH1D* h_top1_pt = add_hist_1d<TH1D>(histmap, pf+"top1_pt", 0, 400, 60);
+		TH1D* h_top2_pt = add_hist_1d<TH1D>(histmap, pf+"top2_pt", 0, 400, 60);
+		TH1D* h_d_top_pt = add_hist_1d<TH1D>(histmap, pf+"d_top_pt", 0, 400, 60);
+        
+		TH2D* h_lep_pt_iso_mu = add_hist_2d<TH2D>(histmap, pf+"lep_pt_iso_mu", 0, 600, 60, 0, 5, 20);
         TH2D* h_lep_pt_iso_ele = add_hist_2d<TH2D>(histmap, pf+"lep_pt_iso_ele", 0, 600, 60, 0, 5, 20);
         
         TH3D* h_lep_pt_iso_npv_mu = add_hist_3d<TH3D>(histmap, pf+"lep_pt_iso_npv_mu", 0, 600, 60, 0, 5, 20, 0, 50, 50);
@@ -134,10 +142,10 @@ int main(int argc, const char* argv[])
        	t.tree->SetBranchStatus("*", false); 
        	t.tree->SetBranchStatus("n__lep", true); 
        	t.tree->SetBranchStatus("lep__pt", true); 
-       	t.tree->SetBranchStatus("lep__iso", true); 
        	t.tree->SetBranchStatus("lep__rel_iso", true); 
        	t.tree->SetBranchStatus("lep__id", true); 
        	t.tree->SetBranchStatus("n__pv", true); 
+       	t.tree->SetBranchStatus("gen_t*", true); 
         //count number of bytes read
         long nbytes = 0;
         for (int i = 0 ;i < t.tree->GetEntries(); i++) {
@@ -164,7 +172,21 @@ int main(int argc, const char* argv[])
             //zero all branch variables
             t.loop_initialize();
             nbytes += t.tree->GetEntry(i);
-            
+        	
+			h_top1_mass->Fill(t.gen_t__mass);
+			h_top1_mass->Fill(t.gen_tbar__mass);
+			h_top2_mass->Fill(t.gen_t2__mass);
+			h_top2_mass->Fill(t.gen_tbar2__mass);
+			h_top1_pt->Fill(t.gen_t__pt);
+			h_top1_pt->Fill(t.gen_tbar__pt);
+			h_top2_pt->Fill(t.gen_t2__pt);
+			h_top2_pt->Fill(t.gen_tbar2__pt);
+			
+			h_d_top_mass->Fill(t.gen_t__mass - t.gen_t2__mass);
+			h_d_top_mass->Fill(t.gen_tbar__mass - t.gen_tbar2__mass);
+			h_d_top_pt->Fill(t.gen_t__pt - t.gen_t2__pt);
+			h_d_top_pt->Fill(t.gen_tbar__pt - t.gen_tbar2__pt);
+
             int nlep = t.n__lep;
             
             float npv = t.n__pv;
