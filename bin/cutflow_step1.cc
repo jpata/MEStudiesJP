@@ -129,9 +129,15 @@ int main(int argc, const char* argv[])
         //create ME TTree and branch variables
         TTHTree t((TTree*)(tf->Get("tthNtupleAnalyzer/events")));
         std::cout << sample_fn << " " << sample_nick << " entries " << t.tree->GetEntries() << std::endl;
-        
+       	 
         t.set_branch_addresses();
-        
+       	t.tree->SetBranchStatus("*", false); 
+       	t.tree->SetBranchStatus("n__lep", true); 
+       	t.tree->SetBranchStatus("lep__pt", true); 
+       	t.tree->SetBranchStatus("lep__iso", true); 
+       	t.tree->SetBranchStatus("lep__rel_iso", true); 
+       	t.tree->SetBranchStatus("lep__id", true); 
+       	t.tree->SetBranchStatus("n__pv", true); 
         //count number of bytes read
         long nbytes = 0;
         for (int i = 0 ;i < t.tree->GetEntries(); i++) {
