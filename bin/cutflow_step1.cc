@@ -105,10 +105,12 @@ int main(int argc, const char* argv[])
         
         //nickname of sample (must be unique)
         const string sample_nick = sample.getParameter<string>("nickName");
+        const string tree_name = sample.getParameter<string>("treeName");
         
         //sample type, which may affect the meaning/contents of the TTrees
         //const SampleType sample_type = static_cast<SampleType>(sample.getParameter<int>("type"));
         
+        std::cout << "opening file " << sample_fn.c_str() << std::endl;
         TFile* tf = new TFile(sample_fn.c_str());
         if (tf==0 || tf->IsZombie()) {
             std::cerr << "ERROR: could not open file " << sample_fn << " " << tf << std::endl;
@@ -123,7 +125,9 @@ int main(int argc, const char* argv[])
 		TH1D* h_d_top_mass = add_hist_1d<TH1D>(histmap, pf+"d_top_mass", 100, 400, 60);
 		TH1D* h_top1_pt = add_hist_1d<TH1D>(histmap, pf+"top1_pt", 0, 400, 60);
 		TH1D* h_top2_pt = add_hist_1d<TH1D>(histmap, pf+"top2_pt", 0, 400, 60);
-		TH1D* h_d_top_pt = add_hist_1d<TH1D>(histmap, pf+"d_top_pt", 0, 400, 60);
+        TH1D* h_d_top_pt = add_hist_1d<TH1D>(histmap, pf+"d_top_pt", 0, 400, 60);
+
+        TH1D* h_lep_puch = add_hist_1d<TH1D>(histmap, pf+"lep_puch", 0, 50, 20);
         
 		TH2D* h_lep_pt_iso_mu = add_hist_2d<TH2D>(histmap, pf+"lep_pt_iso_mu", 0, 600, 60, 0, 5, 20);
         TH2D* h_lep_pt_iso_ele = add_hist_2d<TH2D>(histmap, pf+"lep_pt_iso_ele", 0, 600, 60, 0, 5, 20);
@@ -131,20 +135,18 @@ int main(int argc, const char* argv[])
         TH3D* h_lep_pt_iso_npv_mu = add_hist_3d<TH3D>(histmap, pf+"lep_pt_iso_npv_mu", 0, 600, 60, 0, 5, 20, 0, 50, 50);
         TH3D* h_lep_pt_iso_npv_ele = add_hist_3d<TH3D>(histmap, pf+"lep_pt_iso_npv_ele", 0, 600, 60, 0, 5, 20, 0, 50, 50);
         
-        TH3D* h_lep_pt_iso2_npv_mu = add_hist_3d<TH3D>(histmap, pf+"lep_pt_iso2_npv_mu", 0, 600, 60, 0, 0.2, 100, 0, 50, 50);
-        TH3D* h_lep_pt_iso2_npv_ele = add_hist_3d<TH3D>(histmap, pf+"lep_pt_iso2_npv_ele", 0, 600, 60, 0, 0.2, 100, 0, 50, 50);
+        TH3D* h_lep_pt_iso2_npv_mu = add_hist_3d<TH3D>(histmap, pf+"lep_pt_iso2_npv_mu", 0, 600, 60, 0, 0.2, 20, 0, 50, 50);
+        TH3D* h_lep_pt_iso2_npv_ele = add_hist_3d<TH3D>(histmap, pf+"lep_pt_iso2_npv_ele", 0, 600, 60, 0, 0.2, 20, 0, 50, 50);
         
         //create ME TTree and branch variables
-        TTHTree t((TTree*)(tf->Get("tthNtupleAnalyzer/events")));
+        TTHTree t((TTree*)(tf->Get(tree_name.c_str())));
         std::cout << sample_fn << " " << sample_nick << " entries " << t.tree->GetEntries() << std::endl;
        	 
         t.set_branch_addresses();
        	t.tree->SetBranchStatus("*", false); 
        	t.tree->SetBranchStatus("n__lep", true); 
-       	t.tree->SetBranchStatus("lep__pt", true); 
-       	t.tree->SetBranchStatus("lep__rel_iso", true); 
-       	t.tree->SetBranchStatus("lep__id", true); 
-       	t.tree->SetBranchStatus("n__pv", true); 
+       	t.tree->SetBranchStatus("lep__*", true);
+       	t.tree->SetBranchStatus("n__pv", true);
        	t.tree->SetBranchStatus("gen_t*", true); 
         //count number of bytes read
         long nbytes = 0;
@@ -194,8 +196,16 @@ int main(int argc, const char* argv[])
             for(int nl=0; nl < nlep; nl++) {
                 
                 float pt = t.lep__pt[nl];
+                float eta = t.lep__eta[nl];
+                float puch = t.lep__puch_iso[nl];
                 int id = t.lep__id[nl];
                 float iso = t.lep__rel_iso[nl];
+                
+                if (pt>20 && std::abs(eta)<2.1) {
+                    continue;
+                }
+                
+                h_lep_puch->Fill(puch);
                 
                 if (std::abs(id) == 13) {
                     h_lep_pt_iso_mu->Fill(pt, iso, 1.0);
