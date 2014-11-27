@@ -228,8 +228,9 @@ int main(int argc, const char* argv[])
     const edm::VParameterSet& samples = in.getParameter<edm::VParameterSet>("samples");
     
     //limits with [first, last] events to process, indexed by full list of samples
-    const std::vector<int> ev_limits = in.getParameter<std::vector<int>>("evLimits");
-    
+	const std::vector<int> ev_limits = in.getParameter<std::vector<int>>("evLimits");
+	const std::string outfn = in.getParameter<std::string>("outFile");
+	
     std::map<std::string, TH1*> histmap;
     
     TStopwatch sw;
@@ -250,10 +251,21 @@ int main(int argc, const char* argv[])
         //sample type, which may affect the meaning/contents of the TTrees
         const Process process = static_cast<Process>(sample.getParameter<int>("process"));
         
+        TH1::SetDefaultSumw2(true);
+        
         //create output histograms
         const string pf = sample_nick + "_";
         TH1D* h_nj_sl = add_hist_1d<TH1D>(histmap, pf + "numJets_sl", 5, 12);
         TH1D* h_nj_dl = add_hist_1d<TH1D>(histmap, pf + "numJets_dl", 4, 12);
+
+        TH1D* h_nt_sl = add_hist_1d<TH1D>(histmap, pf + "numBTagM_sl", 0, 8);
+        TH1D* h_nt_dl = add_hist_1d<TH1D>(histmap, pf + "numBTagM_dl", 0, 8);
+		
+		TH1D* h_btag_lr_sl = add_hist_1d<TH1D>(histmap, pf + "btag_lr_sl", 0, 1, 20);
+		TH1D* h_btag_lr_dl = add_hist_1d<TH1D>(histmap, pf + "btag_lr_dl", 0, 1, 20);
+		TH1D* h_btag_lr_sl2 = add_hist_1d<TH1D>(histmap, pf + "btag_lr_sl2", 0.85, 1, 20);
+		TH1D* h_btag_lr_dl2 = add_hist_1d<TH1D>(histmap, pf + "btag_lr_dl2", 0.85, 1, 20);
+
         TH1D* h_lep_pt_sl = add_hist_1d<TH1D>(histmap, pf + "lepton_pt_sl", 10, 400, 80);
         TH1D* h_lep1_pt_dl = add_hist_1d<TH1D>(histmap, pf + "lepton1_pt_dl", 10, 400, 80);
         TH1D* h_lep2_pt_dl = add_hist_1d<TH1D>(histmap, pf + "lepton2_pt_dl", 10, 400, 80);
@@ -274,9 +286,15 @@ int main(int argc, const char* argv[])
         TH1D* h_triggers = add_hist_1d<TH1D>(histmap, pf + "triggers", 0, 10);
         TH1D* h_proc = add_hist_1d<TH1D>(histmap, pf + "processed", 0, 2);
         
-        TH2D* h_cat_btaglr = add_hist_2d<TH2D>(histmap, pf + "cat_btag_lr", 0, 8, 8, 0, 1, 20);
-        
-        
+		TH2D* h_cat_btag_lr = add_hist_2d<TH2D>(histmap, pf + "cat_btag_lr", 0, 8, 8, 0, 1, 20);
+		TH2D* h_cat_time = add_hist_2d<TH2D>(histmap, pf + "cat_time", 0, 8, 8, 0, 400, 20);
+		TH2D* h_cat_rad_mode = add_hist_2d<TH2D>(histmap, pf + "cat_rad_mode", 0, 8, 8, 0, 5, 5);
+		TH2D* h_cat_rad_modeH = add_hist_2d<TH2D>(histmap, pf + "catH_rad_mode", 0, 8, 8, 0, 5, 5);
+		TH2D* h_cat_rad_modeL = add_hist_2d<TH2D>(histmap, pf + "catL_rad_mode", 0, 8, 8, 0, 5, 5);
+		
+		TH2D* h_vtype_btag_lr = add_hist_2d<TH2D>(histmap, pf + "vtype_btag_lr", 0, 10, 10, 0, 1, 20);
+		
+		
         TH2D* h_nperm_s_btaglr = add_hist_2d<TH2D>(histmap, pf + "nperm_s_btag_lr", 0, 3, 3, 0.9, 1, 10);
         TH2D* h_nperm_b_btaglr = add_hist_2d<TH2D>(histmap, pf + "nperm_b_btag_lr", 0, 3, 3, 0.9, 1, 10);
         
@@ -285,6 +303,9 @@ int main(int argc, const char* argv[])
         
         TH2D* h_nperm_s_cat = add_hist_2d<TH2D>(histmap, pf + "nperm_s_cat", 0, 3, 3, 0, 8, 8);
         TH2D* h_nperm_b_cat = add_hist_2d<TH2D>(histmap, pf + "nperm_b_cat", 0, 3, 3, 0, 8, 8);
+        
+        TH2D* h_vtype_cat = add_hist_2d<TH2D>(histmap, pf + "vtype_cat", 0, 10, 10, 0, 8, 8);
+        //TH2D* h_gvtype_cat = add_hist_2d<TH2D>(histmap, pf + "gen_vtype_cat", 0, 10, 10, 0, 8, 8);
         
         
         TH2D* h_cat_discr = 0;
@@ -321,18 +342,20 @@ int main(int argc, const char* argv[])
             }
             
             //check if we are within limits
-            if ((n_total_entries<ev_limits[0]) ||
+            if ((n_total_entries < ev_limits[0]) ||
                 (ev_limits[1]>ev_limits[0] && n_total_entries > ev_limits[1])
                 ) {
-                std::cout << "stopping loop with " << n_total_entries << " "
-                << i << " in " << sample_nick << std::endl;
-                break;
+                //std::cout << "stopping loop with " << n_total_entries << " "
+                //<< i << " in " << sample_nick << std::endl;
+                continue;
             }
             
             h_proc->Fill(1);
             //zero all branch variables
             t.loop_initialize();
             nbytes += t.tree->GetEntry(i);
+            
+            const float w = t.weight_;
             
             //keep only nominal events
             if (!(t.syst_ == 0)) {
@@ -362,14 +385,14 @@ int main(int argc, const char* argv[])
             //#    #int trigVtype0 =  (Vtype==0 && ( triggerFlags[22]>0 || triggerFlags[23]>0 || triggerFlags[14]>0 ||triggerFlags[21]>0 ));
             //#    #// OR of two trigger paths:    "HLT_Ele17_CaloIdL_CaloIsoVL_Ele8_CaloIdL_CaloIsoVL_v.*",
             //
-            h_triggers->Fill(0);
+            h_triggers->Fill(0.0, w);
             bool trig_mu = trf[22]==1 || trf[23]==1 || trf[14]==1 || trf[21]==1;
             bool trig_ele = trf[44]==1;
             if (trig_mu) {
-                h_triggers->Fill(1);
+                h_triggers->Fill(1.0, w);
             }
             if (trig_ele) {
-                h_triggers->Fill(2);
+                h_triggers->Fill(2.0, w);
             }
             //std::cout << trig_mu << std::endl;
             
@@ -383,50 +406,69 @@ int main(int argc, const char* argv[])
             //Single lepton cuts
             if (is_sl) {
                 const float lep_pt1 = t.lepton_pt_[0];
-                h_lep_pt_sl->Fill(lep_pt1);
+                h_lep_pt_sl->Fill(lep_pt1, w);
                 
+                h_nt_sl->Fill(t.numBTagM_, w);
                 if (t.numBTagM_ >= 3) {
-                    h_nj_sl->Fill(t.numJets_);
+                    h_nj_sl->Fill(t.numJets_, w);
                 }
                 
-                h_lep_riso_sl->Fill(t.lepton_rIso_[0]);
+                h_lep_riso_sl->Fill(t.lepton_rIso_[0], w);
+				h_btag_lr_sl->Fill(t.btag_LR_, w);
+				h_btag_lr_sl2->Fill(t.btag_LR_, w);
             }
             
             //dilepton cuts
             if (is_dl) {
                 const float lep_pt1 = t.lepton_pt_[0];
-                h_lep1_pt_dl->Fill(lep_pt1);
+                h_lep1_pt_dl->Fill(lep_pt1, w);
                 const float lep_pt2 = t.lepton_pt_[1];
-                h_lep2_pt_dl->Fill(lep_pt2);
+                h_lep2_pt_dl->Fill(lep_pt2, w);
                 
+                h_nt_dl->Fill(t.numBTagM_, w);
+
                 if (t.numBTagM_ >= 2) {
-                    h_nj_dl->Fill(t.numJets_);
+                    h_nj_dl->Fill(t.numJets_, w);
                 }
                 
-                h_lep1_riso_dl->Fill(t.lepton_rIso_[0]);
-                h_lep2_riso_dl->Fill(t.lepton_rIso_[1]);
-                
+                h_lep1_riso_dl->Fill(t.lepton_rIso_[0], w);
+                h_lep2_riso_dl->Fill(t.lepton_rIso_[1], w);
+				h_btag_lr_dl->Fill(t.btag_LR_, w);
+				h_btag_lr_dl2->Fill(t.btag_LR_, w);
             }
             
             MECategory cat = assign_me_category(&t, sample_type);
             
-            
-            h_Vtype->Fill(t.Vtype_);
-            h_type->Fill(t.type_);
-            h_cat->Fill(cat);
-            
-            
-            h_cat_btaglr->Fill(cat, t.btag_LR_);
-            
+            h_Vtype->Fill(t.Vtype_, w);
+            h_type->Fill(t.type_, w);
+			
+            //h_gvtype_vtype->Fill(gen_hypo(std::abs(t.gen_))
+			h_cat_btag_lr->Fill(cat, t.btag_LR_, w);
+			h_vtype_btag_lr->Fill(t.Vtype_, t.btag_LR_, w);
+			
+			TTH::TTJetsRadiationMode rad_mode = TTH::assign_radiation_mode(
+				t.nMatchSimBs_, t.nMatchSimCs_
+			);
+			
             //passes btag LR cut
             int btag_lr_cat = is_btag_lr_high_low(&t, cat);
             
             if (btag_lr_cat == 1) {
-                h_catH->Fill(cat);
+                h_catH->Fill(cat, w);
+				h_cat_rad_modeH->Fill(cat, rad_mode, w);
             } else if (btag_lr_cat == 0) {
-                h_catL->Fill(cat);
+                h_catL->Fill(cat, w);
+				h_cat_rad_modeL->Fill(cat, rad_mode, w);
             }
-            
+			
+			//if (t.btag_LR_ >= 0) {
+			if (btag_lr_cat >= 0) {
+				h_cat->Fill(cat, w);
+				h_vtype_cat->Fill(t.Vtype_, cat, w);
+				h_cat_time->Fill(cat, t.time_, w);
+				h_cat_rad_mode->Fill(cat, rad_mode, w);
+			}
+			
             if (sample_type == ME_8TEV || sample_type == ME_13TEV) {
                 double me_discr = t.probAtSgn_ /
                 (t.probAtSgn_ + 0.02 * t.probAtSgn_alt_);
@@ -439,58 +481,32 @@ int main(int argc, const char* argv[])
                     me_discr = 0.0;
                 
                 if (btag_lr_cat == 1) {
-                    h_cat_discr->Fill(cat, me_discr);
+                    h_cat_discr->Fill(cat, me_discr, w);
                 }
                 
                 int n_correct_perm_s = 0;
                 int n_correct_perm_b = 0;
                 
                 for (int np=0; np<t.nPermut_; np++) {
-                    
-//                    if (cat == CAT6mumu || cat==CAT6emu || cat==CAT6ee) {
-//                        std::cout << "CAT6 perm " << t.perm_to_gen_[np] << " " << is_correct_perm(t.perm_to_gen_[np], cat, process) << std::endl;
-//                    }
-                    
                     if (is_correct_perm(t.perm_to_gen_[np], cat, process)) {
                         n_correct_perm_s += 1;
-                        
-//                        if (cat == CAT6mumu || cat==CAT6emu || cat==CAT6ee) {
-//                            std::cout << "correct perm " << t.perm_to_gen_[np] << " "
-//                            << cat << " " << t.btag_LR_ << " " << btag_lr_cat << std::endl;
-//                        }
-                        
                     }
-                    
-//                    if (i<100) {
-//                        std::cout << "perm s " << t.perm_to_gen_[np] << std::endl;
-//                    }
                     
                 }
                 for (int np=0; np<t.nPermut_alt_; np++) {
                     if (is_correct_perm(t.perm_to_gen_alt_[np], cat, process)) {
                         n_correct_perm_b += 1;
                     }
-                    
-//                    if (i<100) {
-//                        std::cout << "perm b " << t.perm_to_gen_alt_[np] << std::endl;
-//                    }
                 }
-                
-                
-                
+
                 if (btag_lr_cat == 1) {
+                    h_nperm_s_btaglr->Fill(n_correct_perm_s, t.btag_LR_, w);
+                    h_nperm_b_btaglr->Fill(n_correct_perm_b, t.btag_LR_, w);
+                    h_nperm_s_me->Fill(n_correct_perm_s, me_discr, w);
+                    h_nperm_b_me->Fill(n_correct_perm_b, me_discr, w);
                     
-//                    if (cat == CAT6mumu || cat==CAT6emu || cat==CAT6ee) {
-//                        std::cout << "CAT6 nperm " << n_correct_perm_s << std::endl;
-//                    }
-                    
-                    h_nperm_s_btaglr->Fill(n_correct_perm_s, t.btag_LR_);
-                    h_nperm_b_btaglr->Fill(n_correct_perm_b, t.btag_LR_);
-                    h_nperm_s_me->Fill(n_correct_perm_s, me_discr);
-                    h_nperm_b_me->Fill(n_correct_perm_b, me_discr);
-                    
-                    h_nperm_s_cat->Fill(n_correct_perm_s, cat);
-                    h_nperm_b_cat->Fill(n_correct_perm_b, cat);
+                    h_nperm_s_cat->Fill(n_correct_perm_s, cat, w);
+                    h_nperm_b_cat->Fill(n_correct_perm_b, cat, w);
                 }
                 
                 h_proc->Fill(2);
@@ -504,7 +520,7 @@ int main(int argc, const char* argv[])
         
     }
     
-    TFile* outfile = new TFile("outfile.root", "RECREATE");
+    TFile* outfile = new TFile(outfn.c_str(), "RECREATE");
     outfile->cd();
     
     for(auto& kv : histmap) {

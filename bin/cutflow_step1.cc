@@ -127,8 +127,15 @@ int main(int argc, const char* argv[])
 		TH1D* h_top2_pt = add_hist_1d<TH1D>(histmap, pf+"top2_pt", 0, 400, 60);
         TH1D* h_d_top_pt = add_hist_1d<TH1D>(histmap, pf+"d_top_pt", 0, 400, 60);
 
-        TH1D* h_lep_puch = add_hist_1d<TH1D>(histmap, pf+"lep_puch", 0, 50, 20);
-        
+        TH1D* h_lep_puch_iso = add_hist_1d<TH1D>(histmap, pf+"lep_puch_iso", 0, 50, 20);
+        TH1D* h_lep_p_iso = add_hist_1d<TH1D>(histmap, pf+"lep_p_iso", 0, 50, 20);
+        TH1D* h_lep_ph_iso = add_hist_1d<TH1D>(histmap, pf+"lep_ph_iso", 0, 50, 20);
+        TH1D* h_lep_hc_iso = add_hist_1d<TH1D>(histmap, pf+"lep_hc_iso", 0, 50, 20);
+        TH1D* h_lep_ch_iso = add_hist_1d<TH1D>(histmap, pf+"lep_ch_iso", 0, 50, 20);
+		TH1D* h_lep_ec_iso = add_hist_1d<TH1D>(histmap, pf+"lep_ec_iso", 0, 50, 20);
+		
+		TH1D* h_lep_rel_iso = add_hist_1d<TH1D>(histmap, pf+"lep_rel_iso", 0, 2, 20);
+		
 		TH2D* h_lep_pt_iso_mu = add_hist_2d<TH2D>(histmap, pf+"lep_pt_iso_mu", 0, 600, 60, 0, 5, 20);
         TH2D* h_lep_pt_iso_ele = add_hist_2d<TH2D>(histmap, pf+"lep_pt_iso_ele", 0, 600, 60, 0, 5, 20);
         
@@ -197,7 +204,14 @@ int main(int argc, const char* argv[])
                 
                 float pt = t.lep__pt[nl];
                 float eta = t.lep__eta[nl];
-                float puch = t.lep__puch_iso[nl];
+                
+                float puch_iso = t.lep__puch_iso[nl];
+                float p_iso = t.lep__p_iso[nl];
+                float hc_iso = t.lep__hc_iso[nl];
+                float ch_iso = t.lep__ch_iso[nl];
+                float ec_iso = t.lep__ec_iso[nl];
+                float ph_iso = t.lep__ph_iso[nl];
+                
                 int id = t.lep__id[nl];
                 float iso = t.lep__rel_iso[nl];
                 
@@ -205,7 +219,14 @@ int main(int argc, const char* argv[])
                     continue;
                 }
                 
-                h_lep_puch->Fill(puch);
+                h_lep_puch_iso->Fill(puch_iso);
+                h_lep_p_iso->Fill(p_iso);
+                h_lep_hc_iso->Fill(hc_iso);
+                h_lep_ch_iso->Fill(ch_iso);
+                h_lep_ec_iso->Fill(ec_iso);
+                h_lep_ph_iso->Fill(ph_iso);
+				
+				h_lep_rel_iso->Fill(iso);
                 
                 if (std::abs(id) == 13) {
                     h_lep_pt_iso_mu->Fill(pt, iso, 1.0);

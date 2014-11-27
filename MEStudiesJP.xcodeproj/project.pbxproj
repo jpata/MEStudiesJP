@@ -13,8 +13,8 @@
 		A7AE45321A1A1C3800F5E372 /* cutflow.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cutflow.cc; sourceTree = "<group>"; };
 		A7AE45391A1A1C3800F5E372 /* __init__.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
 		A7AE453B1A1A1C3800F5E372 /* cutflow.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = cutflow.py; sourceTree = "<group>"; };
-		A7AE453E1A1A1CA700F5E372 /* cuts.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = cuts.py; path = python/cuts.py; sourceTree = "<group>"; };
-		A7AE453F1A1A1CA700F5E372 /* run_cuts.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = run_cuts.py; path = python/run_cuts.py; sourceTree = "<group>"; };
+		A7AE453E1A1A1CA700F5E372 /* cuts.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = cuts.py; sourceTree = "<group>"; };
+		A7AE453F1A1A1CA700F5E372 /* run_cuts.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = run_cuts.py; sourceTree = "<group>"; };
 		A7AE45421A1A1CF200F5E372 /* analyze_input_tree.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = analyze_input_tree.py; sourceTree = "<group>"; };
 		A7AE45431A1A1CF200F5E372 /* BuildFile.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BuildFile.xml; sourceTree = "<group>"; };
 		A7AE45441A1A1CF200F5E372 /* MEAnalysis.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MEAnalysis.cc; sourceTree = "<group>"; };
@@ -95,6 +95,9 @@
 		A7AE459B1A1A1D2D00F5E372 /* ttbar_test.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = ttbar_test.py; sourceTree = "<group>"; };
 		A7AE459D1A1A32A200F5E372 /* headergen.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = headergen.py; path = ../../TTHNtupleAnalyzer/python/headergen.py; sourceTree = "<group>"; };
 		A7AE459E1A1A388400F5E372 /* perms.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = perms.py; path = python/perms.py; sourceTree = "<group>"; };
+		A7B80EB21A25DF5D0084306A /* tth_tree_template.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tth_tree_template.hh; sourceTree = "<group>"; };
+		A7B80EB31A25DF6D0084306A /* sample_branches.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = sample_branches.py; sourceTree = "<group>"; };
+		A7B80EB41A274C6F0084306A /* simplemin.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = simplemin.cc; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -104,8 +107,6 @@
 				A7AE459E1A1A388400F5E372 /* perms.py */,
 				A7AE457E1A1A1D2D00F5E372 /* TTHNtupleAnalyzer */,
 				A7AE45401A1A1CF200F5E372 /* MEAnalysis */,
-				A7AE453E1A1A1CA700F5E372 /* cuts.py */,
-				A7AE453F1A1A1CA700F5E372 /* run_cuts.py */,
 				A7AE452F1A1A1C3800F5E372 /* MEStudiesJP */,
 			);
 			sourceTree = "<group>";
@@ -125,6 +126,7 @@
 				A75D8D9C1A1CEE6800A9FA68 /* cutflow_step1.cc */,
 				A7AE45311A1A1C3800F5E372 /* BuildFile.xml */,
 				A7AE45321A1A1C3800F5E372 /* cutflow.cc */,
+				A7B80EB41A274C6F0084306A /* simplemin.cc */,
 			);
 			path = bin;
 			sourceTree = "<group>";
@@ -132,6 +134,8 @@
 		A7AE45381A1A1C3800F5E372 /* python */ = {
 			isa = PBXGroup;
 			children = (
+				A7AE453F1A1A1CA700F5E372 /* run_cuts.py */,
+				A7AE453E1A1A1CA700F5E372 /* cuts.py */,
 				A75D8D9B1A1CEE6300A9FA68 /* cutflow_step1.py */,
 				A7AE45391A1A1C3800F5E372 /* __init__.py */,
 				A7AE453B1A1A1C3800F5E372 /* cutflow.py */,
@@ -288,6 +292,7 @@
 		A7AE45871A1A1D2D00F5E372 /* interface */ = {
 			isa = PBXGroup;
 			children = (
+				A7B80EB21A25DF5D0084306A /* tth_tree_template.hh */,
 				A7AE45881A1A1D2D00F5E372 /* EventHypothesis.hh */,
 				A7AE45891A1A1D2D00F5E372 /* HypoEnums.hh */,
 				A7AE458A1A1A1D2D00F5E372 /* tth_tree.hh */,
@@ -307,6 +312,7 @@
 		A7AE458E1A1A1D2D00F5E372 /* python */ = {
 			isa = PBXGroup;
 			children = (
+				A7B80EB31A25DF6D0084306A /* sample_branches.py */,
 				A7AE458F1A1A1D2D00F5E372 /* __init__.py */,
 				A7AE45901A1A1D2D00F5E372 /* CfiFile_cfi.py */,
 				A7AE45911A1A1D2D00F5E372 /* Main_cfg.py */,
